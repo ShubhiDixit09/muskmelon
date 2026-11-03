@@ -1,4 +1,5 @@
 import { OpenAI } from 'openai';
+import { generateText } from 'ai';
 import { MUSK_COGNITIVE_SIGNATURE, ELON_PROMPT_SYSTEM_INSTRUCTION } from './cognitive-signature';
 import { TemporalChunk, AgentResponse, Message } from '../types';
 import { generateAnswerReceipt } from './answer-receipt';
@@ -110,6 +111,38 @@ async function callGeminiAPI(systemPrompt: string, userQuery: string, history: M
   if (!res.ok) return null;
   const data = await res.json();
   return data?.candidates?.[0]?.content?.parts?.[0]?.text || null;
+}
+
+
+/**
+ * Keyless production LLM fallback through Vercel AI Gateway.
+ * Vercel supplies short-lived OIDC credentials to deployed functions.
+ * Local development can use AI_GATEWAY_API_KEY instead.
+ */
+async function callVercelGatewayAPI(
+  systemPrompt: string,
+  userQuery: string,
+  history: Message[] = []
+): Promise<string | null> {
+  if (!process.env.VERCEL && !process.env.AI_GATEWAY_API_KEY) return null;
+
+  const messages: Array<{ role: 'assistant' | 'user'; content: string }> = [
+    ...history.slice(-4).map(h => ({
+      role: (h.role === 'assistant' ? 'assistant' : 'user') as 'assistant' | 'user',
+      content: h.content
+    })),
+    { role: 'user', content: userQuery }
+  ];
+
+  const result = await generateText({
+    model: 'openai/gpt-4o-mini',
+    system: systemPrompt,
+    messages,
+    temperature: 0.6,
+    maxOutputTokens: 600
+  });
+
+  return result.text?.trim() || null;
 }
 
 /**
@@ -238,7 +271,26 @@ Current Mode: ${mode} ${asOfDate ? `(As of ${asOfDate})` : ''}
     }
   }
 
-  // 4. Seamless First-Principles RAG Synthesizer
+  // 4. Vercel AI Gateway with project-scoped OIDC (no embedded API keys).
+  if (process.env.VERCEL || process.env.AI_GATEWAY_API_KEY) {
+    try {
+      const answer = await callVercelGatewayAPI(systemPrompt, query, history);
+      if (answer) {
+        const receipt = await generateAnswerReceipt(query, answer, contextChunks, mode as any, asOfDate);
+        return { message: answer, receipt, confidence: receipt.groundingConfidence };
+      }
+    } catch (err: unknown) {
+      console.error('Vercel AI Gateway generation unavailable:', err instanceof Error ? err.message : 'Unknown error');
+    }
+  }
+
+  // Never represent canned demo text as a successfully generated AI answer in production.
+  if (process.env.VERCEL) {
+    throw new Error('AI generation is unavailable. Enable Vercel AI Gateway for this project or configure an LLM API key.');
+  }
+
+  // 5. Deterministic offline-only fallback for local demo work.
+  // First-Principles RAG Synthesizer
   const answer = synthesizeRAGResponse(query, contextChunks, mode, asOfDate);
   const receipt = await generateAnswerReceipt(query, answer, contextChunks, mode as any, asOfDate);
 

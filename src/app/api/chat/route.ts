@@ -65,6 +65,14 @@ export async function POST(req: Request) {
       }
     }).catch(() => {}); // Don't fail the response if telemetry fails
 
-    return NextResponse.json({ error: errorMessage }, { status: 500 });
+    if (errorMessage.includes('AI generation is unavailable')) {
+      return NextResponse.json({
+        code: 'AI_PROVIDER_UNAVAILABLE',
+        error: 'The AI provider is not available. Configure a server-side OpenAI, Gemini, or OpenRouter key, or enable Vercel AI Gateway billing.'
+      }, { status: 503 });
+    }
+
+    // Hide server-side implementation details from end users.
+    return NextResponse.json({ error: 'Unable to complete the chat request. Please try again.' }, { status: 500 });
   }
 }

@@ -1,5 +1,12 @@
 # MuskMelon — The Adaptive, Two-Way Knowledge Twin
 
+<!-- LIVE DEPLOYMENT LINK -->
+
+[**Open live MuskMelon**](https://muskmelon-shubhidixit09.vercel.app/)
+
+**Deployment:** Vercel · Gemini-powered chat enabled. Answers use a bundled historical archive for context; Weaviate Cloud is not configured, and archive citations are not independently verified.
+<!-- END LIVE DEPLOYMENT LINK -->
+
 > **Git for Two Evolving Minds**: Version Elon Musk’s changing knowledge, preserve relevant context across follow-up questions, and personalise every conversation through a consent-based User Twin—without mixing inference with fact.
 
 ---

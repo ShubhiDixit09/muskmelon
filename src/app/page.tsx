@@ -779,7 +779,7 @@ export default function Home() {
                       }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#10b981' }}>
                           <CheckCircle2 size={10} />
-                          <span>{Math.round((m.confidence || 0.95) * 100)}% Grounded</span>
+                          <span>{(m.confidence ?? 0) > 0 ? `${Math.round((m.confidence ?? 0) * 100)}% Grounded (estimate)` : 'Archive source — not verified'}</span>
                         </div>
                         <button
                           onClick={() => { setSelectedReceipt(m.receipt); setShowReceiptModal(true); }}

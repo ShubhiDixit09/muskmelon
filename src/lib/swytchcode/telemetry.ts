@@ -5,10 +5,11 @@ import { existsSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 
+const IS_SERVERLESS = Boolean(process.env.VERCEL);
 const DATA_DIR = path.join(process.cwd(), '.data');
 const AUDIT_PATH = path.join(DATA_DIR, 'swytchcode-audit.json');
 
-if (!existsSync(DATA_DIR)) {
+if (!IS_SERVERLESS && !existsSync(DATA_DIR)) {
   mkdirSync(DATA_DIR, { recursive: true });
 }
 
@@ -43,6 +44,8 @@ export interface AuditStats {
 }
 
 async function loadAuditLog(): Promise<AuditEntry[]> {
+  // Vercel functions have a read-only code filesystem and no durable local storage.
+  if (IS_SERVERLESS) return [];
   try {
     if (!existsSync(AUDIT_PATH)) return [];
     const data = await fs.readFile(AUDIT_PATH, 'utf-8');
@@ -65,6 +68,22 @@ export async function recordExecution(entry: Omit<AuditEntry, 'id' | 'timestamp'
     timestamp: new Date().toISOString(),
     ...entry
   };
+
+  if (IS_SERVERLESS) {
+    // Structured platform logs replace file writes in serverless deployments.
+    // Exclude the input payload so prompts, PII, and tokens are never logged.
+    console.info('[swytchcode:audit]', JSON.stringify({
+      id: fullEntry.id,
+      timestamp: fullEntry.timestamp,
+      toolName: fullEntry.toolName,
+      allowed: fullEntry.policyResult.allowed,
+      action: fullEntry.policyResult.action,
+      success: fullEntry.execution.success,
+      durationMs: fullEntry.execution.durationMs,
+      retryCount: fullEntry.execution.retryCount
+    }));
+    return fullEntry;
+  }
 
   const log = await loadAuditLog();
   log.push(fullEntry);

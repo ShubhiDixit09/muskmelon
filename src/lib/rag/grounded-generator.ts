@@ -215,7 +215,7 @@ export async function generateGroundedResponse(
 
   const systemPrompt = `${ELON_PROMPT_SYSTEM_INSTRUCTION}
 
-## CURRENT VERIFIED RAG KNOWLEDGE CONTEXT (Retrieved from Weaviate):
+## PROJECT KNOWLEDGE CONTEXT (Bundled archive; Weaviate only if separately configured; verify attribution before treating as fact):
 ${contextText}
 
 Current Mode: ${mode} ${asOfDate ? `(As of ${asOfDate})` : ''}

@@ -98,9 +98,10 @@ async function callGeminiAPI(systemPrompt: string, userQuery: string, history: M
     { role: 'user', parts: [{ text: userQuery }] }
   ];
 
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`, {
+  const geminiModel = process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite';
+  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(geminiModel)}:generateContent`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'x-goog-api-key': geminiKey },
     body: JSON.stringify({
       system_instruction: { parts: [{ text: systemPrompt }] },
       contents,

@@ -1,14 +1,15 @@
 import fs from 'node:fs/promises';
-import { existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { TemporalChunk } from '../types';
+import bundledSeedData from '../../../data/musk/elon_musk_dataset_2010_2025.json';
 
+const IS_SERVERLESS = Boolean(process.env.VERCEL);
 const DATA_DIR = path.join(process.cwd(), '.data');
 const STORE_PATH = path.join(DATA_DIR, 'temporal-index.json');
-const SEED_DATA_PATH = path.join(process.cwd(), 'data', 'musk', 'elon_musk_dataset_2010_2025.json');
 
 // Ensure data directory exists
-if (!existsSync(DATA_DIR)) {
+if (!IS_SERVERLESS && !existsSync(DATA_DIR)) {
   mkdirSync(DATA_DIR, { recursive: true });
 }
 
@@ -40,7 +41,7 @@ function computeTextOverlap(query: string, text: string): number {
 
 export async function loadIndex(): Promise<TemporalChunk[]> {
   try {
-    if (existsSync(STORE_PATH)) {
+    if (!IS_SERVERLESS && existsSync(STORE_PATH)) {
       const data = await fs.readFile(STORE_PATH, 'utf-8');
       const parsed = JSON.parse(data);
       if (Array.isArray(parsed) && parsed.length > 0) {
@@ -53,9 +54,10 @@ export async function loadIndex(): Promise<TemporalChunk[]> {
 
   // Auto-seed from JSON dataset if empty
   try {
-    if (existsSync(SEED_DATA_PATH)) {
-      const seedRaw = readFileSync(SEED_DATA_PATH, 'utf-8');
-      const seedItems = JSON.parse(seedRaw);
+    {
+      // Bundled JSON is always included in the deployed function artifact.
+      // Do not try to write it to the read-only Vercel application directory.
+      const seedItems = bundledSeedData;
       const seededChunks: TemporalChunk[] = seedItems.map((item: any, idx: number) => ({
         id: `seed-musk-${idx + 1}`,
         content: `[${item.date}] (${item.topic}) ${item.content} (Source: ${item.source || '@elonmusk'})`,
@@ -69,7 +71,7 @@ export async function loadIndex(): Promise<TemporalChunk[]> {
           chunkIndex: idx
         }
       }));
-      await saveIndex(seededChunks);
+      if (!IS_SERVERLESS) await saveIndex(seededChunks);
       return seededChunks;
     }
   } catch (err) {
@@ -80,6 +82,9 @@ export async function loadIndex(): Promise<TemporalChunk[]> {
 }
 
 export async function saveIndex(chunks: TemporalChunk[]): Promise<void> {
+  if (IS_SERVERLESS) {
+    throw new Error('Persistent temporal index writes require a database on serverless hosting');
+  }
   await fs.writeFile(STORE_PATH, JSON.stringify(chunks, null, 2), 'utf-8');
 }
 

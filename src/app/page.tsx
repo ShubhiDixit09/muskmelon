@@ -240,7 +240,7 @@ export default function Home() {
             role: 'assistant',
             content: responseText,
             receipt: data.receipt,
-            confidence: data.confidence || 0.95,
+            confidence: data.confidence ?? 0,
             timestamp: responseTimeStr
           }]);
         });

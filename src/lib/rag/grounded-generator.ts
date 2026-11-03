@@ -285,9 +285,40 @@ Current Mode: ${mode} ${asOfDate ? `(As of ${asOfDate})` : ''}
     }
   }
 
-  // Never represent canned demo text as a successfully generated AI answer in production.
+  // Serverless fallback: actual retrieval over the bundled project archive.
+  // No LLM claim, fabricated conversation, or ungrounded reply is returned.
   if (process.env.VERCEL) {
-    throw new Error('AI generation is unavailable. Enable Vercel AI Gateway for this project or configure an LLM API key.');
+    const stopWords = new Set([
+      'the', 'and', 'for', 'what', 'when', 'where', 'why', 'how', 'does',
+      'did', 'about', 'with', 'this', 'that', 'from', 'have', 'been',
+      'would', 'could', 'tell', 'please', 'musk', 'elon', 'think', 'thought'
+    ]);
+    const terms = [...new Set((query.toLowerCase().match(/[a-z0-9]{3,}/g) || [])
+      .filter(term => !stopWords.has(term)))];
+
+    const relevant = contextChunks.map(chunk => {
+      const searchable = (chunk.content + ' ' + (chunk.metadata.topic || '')).toLowerCase();
+      const matched = terms.filter(term => searchable.includes(term)).length;
+      return { chunk, matched };
+    }).filter(item => item.matched > 0)
+      .sort((a, b) => b.matched - a.matched)
+      .slice(0, 3)
+      .map(item => item.chunk);
+
+    const answer = relevant.length
+      ? 'Archive-only mode — a generative AI model is not configured. These are relevant records from the project dataset, not independently verified quotations or new model-generated reasoning:\\n\\n'
+        + relevant.map((chunk, i) =>
+          `${i + 1}. [${chunk.validFrom}] ${chunk.content.slice(0, 420)}\\nDataset attribution: ${chunk.metadata.source}`
+        ).join('\\n\\n')
+      : 'Archive-only mode — a generative AI model is not configured, and this question did not match the bundled project records. Enable an LLM provider for open-ended answers.';
+
+    const receipt = await generateAnswerReceipt(query, answer, relevant, mode as any, asOfDate);
+    // The dataset has not undergone independent fact verification; do not
+    // display a fabricated 95% grounding/claim-verification score.
+    receipt.claimEvidence = [];
+    receipt.groundingConfidence = 0;
+    receipt.isSynthesized = false;
+    return { message: answer, receipt, confidence: 0 };
   }
 
   // 5. Deterministic offline-only fallback for local demo work.

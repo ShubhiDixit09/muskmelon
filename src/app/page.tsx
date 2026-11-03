@@ -35,6 +35,10 @@ export default function Home() {
 
   // ── App State ─────────────────────────────────────────────────────────
   const [appVisible, setAppVisible] = useState(false);
+  const [serviceStatus, setServiceStatus] = useState<{
+    modelKeyConfigured: boolean;
+    weaviateConfigured: boolean;
+  } | null>(null);
   const [mode, setMode] = useState<Mode>('now');
   const [asOfDate, setAsOfDate] = useState('2023-01-01');
   const [compareDates, setCompareDates] = useState<[string, string]>(['2021-02-01', '2021-06-01']);
@@ -77,6 +81,16 @@ export default function Home() {
   // ═══════════════════════════════════════════════════════════════════════
   // EFFECTS
   // ═══════════════════════════════════════════════════════════════════════
+
+  // Server-side configuration status (keys are never sent to the browser).
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/health', { cache: 'no-store' })
+      .then(res => { if (!res.ok) throw new Error('Health endpoint unavailable'); return res.json(); })
+      .then(status => { if (!cancelled) setServiceStatus(status); })
+      .catch(() => { if (!cancelled) setServiceStatus(null); });
+    return () => { cancelled = true; };
+  }, []);
 
   // Set date on mount
   useEffect(() => {
@@ -495,7 +509,7 @@ export default function Home() {
                 borderRadius: '9999px', fontSize: '10px', fontWeight: 600, color: '#7dd3fc'
               }}>
                 <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#38bdf8', boxShadow: '0 0 4px rgba(56, 189, 248, 0.5)' }} />
-                <span>Weaviate Cloud</span>
+                <span>{serviceStatus === null ? 'Checking archive' : serviceStatus.weaviateConfigured ? 'Weaviate configured' : 'Bundled archive'}</span>
               </div>
               <div style={{
                 display: 'flex', alignItems: 'center', gap: '6px',
@@ -504,7 +518,7 @@ export default function Home() {
                 borderRadius: '9999px', fontSize: '10px', fontWeight: 600, color: '#6ee7b7'
               }}>
                 <Shield size={11} style={{ opacity: 0.85 }} />
-                <span>Swytchcode Secured</span>
+                <span>{serviceStatus === null ? 'Checking model' : serviceStatus.modelKeyConfigured ? 'LLM key configured' : 'LLM key missing'}</span>
               </div>
               <Link
                 href="/admin"

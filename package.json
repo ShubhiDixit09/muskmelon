@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test:rag": "tsx scripts/verify-rag-system.ts",
     "test:gdg-agent": "tsx scripts/test-gdg-agent.ts",
     "sync:weaviate": "tsx scripts/sync-weaviate-knowledge.ts"
   },

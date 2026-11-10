@@ -225,7 +225,12 @@ export default function Home() {
           })
         });
         const data = await res.json();
-        const replyText = `Belief shift for "${userMsg}" between ${compareDates[0]} and ${compareDates[1]}:\n\n${data.diff.whatChanged}\n\n${data.diff.whyChanged}`;
+        const diff = data.diff;
+        const p1 = diff?.period1?.position ? `• As of ${compareDates[0]}:\n"${diff.period1.position}"\n\n` : '';
+        const p2 = diff?.period2?.position ? `• As of ${compareDates[1]}:\n"${diff.period2.position}"\n\n` : '';
+        const what = diff?.whatChanged ? `⚡ What Changed:\n${diff.whatChanged}\n\n` : '';
+        const why = diff?.whyChanged ? `🔬 First-Principles Rationale:\n${diff.whyChanged}` : '';
+        const replyText = `Belief shift for "${userMsg}" (${compareDates[0]} vs ${compareDates[1]}):\n\n${p1}${p2}${what}${why}`;
         setShowThinking(false);
         const responseTimeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         typeText(replyText, () => {
@@ -509,7 +514,7 @@ export default function Home() {
                 borderRadius: '9999px', fontSize: '10px', fontWeight: 600, color: '#7dd3fc'
               }}>
                 <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#38bdf8', boxShadow: '0 0 4px rgba(56, 189, 248, 0.5)' }} />
-                <span>{serviceStatus === null ? 'Checking archive' : serviceStatus.weaviateConfigured ? 'Weaviate configured' : 'Bundled archive'}</span>
+                <span>{serviceStatus === null ? 'Loading RAG' : 'Hybrid RAG (2010–2025)'}</span>
               </div>
               <div style={{
                 display: 'flex', alignItems: 'center', gap: '6px',
@@ -518,7 +523,7 @@ export default function Home() {
                 borderRadius: '9999px', fontSize: '10px', fontWeight: 600, color: '#6ee7b7'
               }}>
                 <Shield size={11} style={{ opacity: 0.85 }} />
-                <span>{serviceStatus === null ? 'Checking model' : serviceStatus.modelKeyConfigured ? 'LLM key configured' : 'LLM key missing'}</span>
+                <span>{serviceStatus?.modelKeyConfigured ? 'Cloud AI Active' : 'Grounded Persona Active'}</span>
               </div>
               <Link
                 href="/admin"

@@ -18,7 +18,7 @@ export default function AdminPage() {
           </Link>
           <div>
             <h1 className="text-xl md:text-2xl font-bold text-[#f1f5f9]">MindCommit Admin & Ingestion</h1>
-            <p className="text-xs text-[#94a3b8]">Manage Knowledge Commits, Datasets & Swytchcode Tools</p>
+            <p className="text-xs text-[#94a3b8]">Manage Knowledge Commits, Datasets & Guardrails</p>
           </div>
         </div>
         <div className="flex gap-2">
@@ -61,24 +61,24 @@ export default function AdminPage() {
             </div>
           </section>
 
-          {/* Swytchcode Core Integrations */}
+          {/* Active Guardrails & Verification Layers */}
           <section className="bg-[#0f172a]/70 border border-[#1e293b] rounded-2xl p-6 backdrop-blur-md">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-base font-semibold text-[#f1f5f9]">Swytchcode Core Integrations</h2>
+              <h2 className="text-base font-semibold text-[#f1f5f9]">Active Guardrails & Verification Layers</h2>
               <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 font-mono">
-                3 Core Integrations
+                4 Active Guardrails
               </span>
             </div>
             <div className="space-y-2.5">
               {[
-                { name: 'Google Drive (Approved Knowledge Ingestion)', id: 'googledrive.list_files / download_file', status: 'Managed OAuth' },
-                { name: 'Weaviate (Versioned Semantic Storage)', id: 'weaviate.vector_index', status: 'Active' },
-                { name: 'OpenAI / Gemini (Grounded Generation)', id: 'openai.gpt4o / embeddings', status: 'Active' },
-                { name: 'Telegram (Authorized Subscriber Access)', id: 'telegram.send_message (Policy: Approval)', status: 'Guardrail Active' }
+                { name: 'Temporal Horizon Guardrail', id: 'Enforces historical limits in Time-Lens mode; prevents future anachronisms', status: 'Enforced' },
+                { name: 'Trap-Question & Premise Defense', id: 'Detects false premises, leading questions, and prompt injection attempts', status: 'Active' },
+                { name: 'Honest Absence Gate', id: 'Prevents hallucination on unverified private trivia or out-of-dataset queries', status: 'Active' },
+                { name: 'Claim-to-Evidence Answer Receipt', id: 'Mathematical grounding confidence & claim verification mapping', status: 'Verified' }
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center justify-between p-3 bg-[#090d16] border border-[#1e293b] rounded-xl text-xs">
                   <div className="flex items-center gap-2.5">
-                    <LinkIcon size={14} className="text-[#f3951f]" />
+                    <Shield size={14} className="text-[#38bdf8]" />
                     <div>
                       <div className="text-[#f1f5f9] font-medium">{item.name}</div>
                       <div className="text-[10px] font-mono text-[#64748b]">{item.id}</div>

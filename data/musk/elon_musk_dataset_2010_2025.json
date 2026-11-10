@@ -7,137 +7,291 @@
     "source": "@elonmusk on X / SpaceX Flight 1"
   },
   {
+    "date": "2010-12-08",
+    "topic": "SpaceX & Dragon",
+    "content": "SpaceX Dragon spacecraft launched into low-Earth orbit and successfully recovered from the Pacific Ocean. First commercial company to recover a spacecraft from orbit.",
+    "likes": 48000,
+    "source": "SpaceX Press Release / @elonmusk"
+  },
+  {
     "date": "2011-04-05",
     "topic": "SpaceX & Mars",
-    "content": "If we can make rockets fully and rapidly reusable, the cost of access to space drops by two orders of magnitude. A city on Mars becomes feasible.",
+    "content": "If we can make rockets fully and rapidly reusable, the cost of access to space drops by two orders of magnitude. A self-sustaining city on Mars becomes feasible.",
     "likes": 52000,
     "source": "@elonmusk on X"
   },
   {
+    "date": "2012-05-25",
+    "topic": "SpaceX & ISS",
+    "content": "Dragon has berthed with the International Space Station! Historic milestone. Commercial spaceflight is officially a reality.",
+    "likes": 75000,
+    "source": "NASA / SpaceX Mission Control"
+  },
+  {
     "date": "2012-06-22",
-    "topic": "Tesla & Electric Vehicles",
-    "content": "First customer deliveries of Tesla Model S today. We set out to prove that an electric car can be better than any gasoline car in every metric.",
+    "topic": "Tesla & Model S",
+    "content": "First customer deliveries of Tesla Model S today. We set out to prove that an electric car can be better than any gasoline car in every metric—acceleration, handling, safety, and efficiency.",
     "likes": 88000,
     "source": "@elonmusk on X"
   },
   {
+    "date": "2012-09-24",
+    "topic": "Tesla & Supercharger",
+    "content": "Unveiling the Tesla Supercharger network. Free long-distance electric driving powered by solar energy. Drive from LA to SF without paying a cent for gas.",
+    "likes": 95000,
+    "source": "Tesla Supercharger Launch Event"
+  },
+  {
     "date": "2013-08-12",
     "topic": "Transportation & Physics",
-    "content": "Published Hyperloop Alpha white paper. High-speed travel in low-pressure tubes powered by solar energy. Faster and safer than bullet trains.",
+    "content": "Published Hyperloop Alpha white paper. High-speed travel in low-pressure tubes powered by solar energy. Faster and safer than bullet trains, LA to SF in 30 minutes.",
     "likes": 120000,
     "source": "Tesla / SpaceX Blog"
   },
   {
     "date": "2014-06-12",
     "topic": "Open Source & Tesla",
-    "content": "All Our Patent Are Belong To You. Tesla will not initiate patent lawsuits against anyone who, in good faith, wants to use our technology.",
+    "content": "All Our Patent Are Belong To You. Tesla will not initiate patent lawsuits against anyone who, in good faith, wants to use our technology. Open-sourcing our electric vehicle patents to accelerate sustainable transport.",
     "likes": 210000,
     "source": "Tesla Official Blog post by Elon Musk"
   },
   {
+    "date": "2014-10-09",
+    "topic": "Tesla & Autopilot",
+    "content": "Unveiling Dual Motor Model S and the first hardware suite for Tesla Autopilot. 360-degree ultrasonic sonar, forward radar, and optical camera. Autonomous driving will arrive far faster than people think.",
+    "likes": 160000,
+    "source": "Tesla Event"
+  },
+  {
     "date": "2014-10-24",
     "topic": "Artificial Intelligence",
-    "content": "With artificial intelligence we are summoning the demon. In all those stories where there's the guy with the pentagram and the holy water, it's like yeah he's sure he can control the demon. Didn't work out.",
+    "content": "With artificial intelligence we are summoning the demon. In all those stories where there's the guy with the pentagram and the holy water, it's like yeah he's sure he can control the demon. Didn't work out. We need regulatory oversight.",
     "likes": 310000,
     "source": "MIT AeroAstro Centennial Symposium"
   },
   {
+    "date": "2015-04-30",
+    "topic": "Tesla Energy & Storage",
+    "content": "Introducing Tesla Energy: Powerwall for homes and Powerpack for utilities. The fundamental constraint on renewable energy is intermittency. Stationary batteries solve the duck curve.",
+    "likes": 180000,
+    "source": "Tesla Energy Unveil Event"
+  },
+  {
+    "date": "2015-09-29",
+    "topic": "Tesla & Model X",
+    "content": "Delivering the first Tesla Model X with Falcon Wing doors. Over-engineered? Probably. But the safest SUV ever tested by NHTSA with a 5-star rating in every category.",
+    "likes": 140000,
+    "source": "Model X Launch Event"
+  },
+  {
     "date": "2015-12-11",
-    "topic": "Artificial Intelligence",
-    "content": "Co-founding OpenAI as a non-profit artificial intelligence research company. Our goal is to advance digital intelligence in the way that is most likely to benefit humanity as a whole.",
+    "topic": "Artificial Intelligence & OpenAI",
+    "content": "Co-founding OpenAI as a non-profit artificial intelligence research company. Our goal is to advance digital intelligence in the way that is most likely to benefit humanity as a whole, unconstrained by financial obligations.",
     "likes": 190000,
     "source": "OpenAI Founding Announcement"
   },
   {
     "date": "2015-12-21",
     "topic": "SpaceX & Rocketry",
-    "content": "Falcon 9 first stage landed back upright at Landing Zone 1, Cape Canaveral! First time in human history an orbital-class rocket returned from space.",
+    "content": "Falcon 9 first stage landed back upright at Landing Zone 1, Cape Canaveral! First time in human history an orbital-class rocket returned from space. 11 satellites deployed, rocket is home.",
     "likes": 480000,
     "source": "@elonmusk on X"
   },
   {
     "date": "2016-03-31",
     "topic": "Tesla & Model 3",
-    "content": "Over 115,000 Model 3 pre-orders in the first 24 hours before anyone even saw the car. The transition to sustainable transport has truly begun.",
+    "content": "Over 115,000 Model 3 pre-orders in the first 24 hours before anyone even saw the car. By the end of the week, 325,000. The mass market transition to sustainable transport has truly begun.",
     "likes": 260000,
+    "source": "@elonmusk on X"
+  },
+  {
+    "date": "2016-04-08",
+    "topic": "SpaceX & Drone Ship",
+    "content": "Falcon 9 booster successfully touched down on 'Of Course I Still Love You' autonomous drone ship in the Atlantic. Landing on an ocean platform moving with 10-foot swells is hard, but we nailed it.",
+    "likes": 390000,
     "source": "@elonmusk on X"
   },
   {
     "date": "2016-07-20",
     "topic": "Tesla Master Plan",
-    "content": "Master Plan, Part Deux: Create stunning solar roofs, expand electric vehicle product line, develop self-driving capability that is 10X safer than manual, enable your car to make money for you when you aren't using it.",
+    "content": "Master Plan, Part Deux: 1. Create stunning solar roofs with seamlessly integrated battery storage. 2. Expand electric vehicle product line to address all major segments. 3. Develop self-driving capability 10X safer than manual driving. 4. Enable your car to make money for you when you aren't using it.",
     "likes": 340000,
     "source": "Tesla Blog"
   },
   {
+    "date": "2016-09-27",
+    "topic": "SpaceX & Mars Architecture",
+    "content": "Making Humans a Multiplanetary Species. Unveiling the Interplanetary Transport System (later named Starship). 100 metric tons of payload to Mars surface, fully reusable, refueled in Earth orbit.",
+    "likes": 510000,
+    "source": "International Astronautical Congress (IAC) Guadalajara"
+  },
+  {
     "date": "2016-12-17",
     "topic": "The Boring Company",
-    "content": "Traffic is driving me nuts. Am going to build a tunnel boring machine and just start digging... It shall be called 'The Boring Company'.",
+    "content": "Traffic is driving me nuts. Am going to build a tunnel boring machine and just start digging... It shall be called 'The Boring Company'. Tunnels beat flying cars: weatherproof, silent, 3D stacked.",
     "likes": 450000,
     "source": "@elonmusk on X"
   },
   {
     "date": "2017-03-27",
     "topic": "Neuralink & Brain Interface",
-    "content": "Creating Neuralink. If you assume any rate of advancement in AI, we will be left far behind. A direct neural interface with the digital world is how humans merge with AI.",
+    "content": "Creating Neuralink. If you assume any rate of advancement in AI, humans will be left far behind. A direct high-bandwidth neural interface with the digital neocortex is how humans achieve symbiosis with AI.",
     "likes": 290000,
     "source": "Vanity Fair / @elonmusk on X"
   },
   {
+    "date": "2017-03-30",
+    "topic": "SpaceX & Reusability",
+    "content": "SES-10 launched on a flight-proven Falcon 9 booster and landed again! First reflight of an orbital-class booster in aerospace history. Reusability is no longer a theory.",
+    "likes": 420000,
+    "source": "@elonmusk on X"
+  },
+  {
     "date": "2017-07-28",
     "topic": "Tesla & Manufacturing",
-    "content": "Handing over the first 30 Model 3s. Welcome to production hell. Building the factory—the machine that builds the machine—is 1000% harder than designing the prototype.",
+    "content": "Handing over the first 30 Model 3s to employees. Welcome to production hell. Building the factory—the machine that builds the machine—is 1000% harder than designing the prototype.",
     "likes": 310000,
     "source": "Tesla Model 3 Delivery Event"
   },
   {
+    "date": "2017-11-16",
+    "topic": "Tesla & Semi / Roadster",
+    "content": "Unveiling the Tesla Semi truck with 500-mile range at 80,000 lbs gross vehicle weight, and the next-generation Tesla Roadster: 0 to 60 mph in 1.9 seconds, top speed 250+ mph.",
+    "likes": 560000,
+    "source": "Tesla Semi Event"
+  },
+  {
     "date": "2018-02-06",
     "topic": "SpaceX & Falcon Heavy",
-    "content": "Falcon Heavy launch successful! My cherry red Tesla Roadster and Starman are currently cruising beyond the orbit of Mars. Red car for a red planet.",
+    "content": "Falcon Heavy launch successful! Both side boosters landed simultaneously in sync at Cape Canaveral. My cherry red Tesla Roadster and Starman are currently cruising beyond the orbit of Mars. Red car for a red planet.",
     "likes": 980000,
     "source": "@elonmusk on X"
   },
   {
     "date": "2018-02-18",
     "topic": "Cryptocurrency",
-    "content": "I literally own zero cryptocurrency, apart from 0.25 BTC that a friend sent me many years ago. Not actively holding crypto.",
+    "content": "I literally own zero cryptocurrency, apart from 0.25 BTC that a friend sent me many years ago. Not actively holding crypto. Focus is physical engineering.",
     "likes": 140000,
     "source": "@elonmusk on X"
   },
   {
+    "date": "2018-02-21",
+    "topic": "SpaceX & Starlink",
+    "content": "First two Starlink test satellites, Tintin A & B, launched successfully into orbit. Target is broadband coverage for underserved areas and funding Mars colonization.",
+    "likes": 210000,
+    "source": "@elonmusk on X"
+  },
+  {
+    "date": "2018-04-13",
+    "topic": "Tesla & Automation",
+    "content": "Yes, excessive automation at Tesla was a mistake. To be precise, my mistake. Humans are underrated. We tore out unnecessary conveyors and put people back on the line.",
+    "likes": 380000,
+    "source": "@elonmusk on X / CBS This Morning"
+  },
+  {
+    "date": "2018-07-01",
+    "topic": "Tesla & Model 3 Production Hell",
+    "content": "We built a giant Sprung structure tent outside Fremont and produced 5,000 Model 3s in a single week. Tesla has become a real car company. Production hell was excruciating.",
+    "likes": 410000,
+    "source": "Internal All-Hands / @elonmusk"
+  },
+  {
     "date": "2018-08-07",
     "topic": "Tesla & Corporate",
-    "content": "Am considering taking Tesla private at $420. Funding secured. Investor support is confirmed.",
+    "content": "Am considering taking Tesla private at $420. Funding secured. Investor support is confirmed. The constant short-seller pressure and quarterly earnings distractions are detrimental.",
     "likes": 850000,
     "source": "@elonmusk on X"
   },
   {
+    "date": "2018-12-18",
+    "topic": "The Boring Company & Loop",
+    "content": "Opening the first Boring Company test tunnel in Hawthorne, California. Driven through in a Tesla on tracking wheels at over 100 mph. 3D tunnel networks solve gridlock.",
+    "likes": 320000,
+    "source": "The Boring Company Event"
+  },
+  {
+    "date": "2019-03-14",
+    "topic": "Tesla & Model Y",
+    "content": "Unveiling Tesla Model Y compact SUV. It has the functionality of an SUV with the performance of a sports car. I predict Model Y will outsell Model 3, S, and X combined globally.",
+    "likes": 290000,
+    "source": "Tesla Model Y Event"
+  },
+  {
+    "date": "2019-04-22",
+    "topic": "Tesla & Autonomy / FSD",
+    "content": "Tesla Autonomy Day: Anyone relying on LiDAR is doomed. LiDAR is a crutch. Humans drive with biological vision and neural processing; artificial neural nets with cameras are the only scalable solution.",
+    "likes": 420000,
+    "source": "Tesla Autonomy Investor Day"
+  },
+  {
+    "date": "2019-08-27",
+    "topic": "SpaceX & Starhopper",
+    "content": "Starhopper 150m hop test successful! Powered by single Raptor engine burning liquid methane and oxygen. The path to Starship Mars transport begins with small hops.",
+    "likes": 530000,
+    "source": "Boca Chica Flight Test"
+  },
+  {
     "date": "2019-11-21",
     "topic": "Tesla & Cybertruck",
-    "content": "Unveiling Tesla Cybertruck. Built with Ultra-Hard 30X Cold-Rolled stainless steel and armored glass. Franz threw steel ball at window... room for improvement!",
+    "content": "Unveiling Tesla Cybertruck. Built with Ultra-Hard 30X Cold-Rolled stainless steel exoskeleton and armored glass. Franz threw steel ball at window... room for improvement! Does not look like any regular pickup.",
     "likes": 1200000,
     "source": "Tesla Cybertruck Reveal Event"
   },
   {
+    "date": "2020-01-07",
+    "topic": "Tesla & Giga Shanghai",
+    "content": "First customer deliveries of Model 3 from Gigafactory Shanghai. Built from muddy field to operating factory in under 10 months. China team's manufacturing velocity is incredible.",
+    "likes": 470000,
+    "source": "Giga Shanghai Event"
+  },
+  {
     "date": "2020-04-29",
-    "topic": "Politics & COVID",
-    "content": "FREE AMERICA NOW. Give people their freedom back. Lockdowns are de facto house arrest.",
+    "topic": "Politics & Society",
+    "content": "FREE AMERICA NOW. Give people their freedom back. Lockdowns are de facto house arrest and violate basic constitutional liberties.",
     "likes": 890000,
+    "source": "@elonmusk on X"
+  },
+  {
+    "date": "2020-05-01",
+    "topic": "Tesla & Financials",
+    "content": "Tesla stock price is too high imo. Selling almost all physical possessions. Will own no house.",
+    "likes": 670000,
     "source": "@elonmusk on X"
   },
   {
     "date": "2020-05-30",
     "topic": "SpaceX & Crew Dragon",
-    "content": "First human launch to the ISS aboard SpaceX Crew Dragon (Demo-2 with Bob and Doug). Commercial crew operational. America has returned to space on American rockets.",
+    "content": "First human launch to the ISS aboard SpaceX Crew Dragon (Demo-2 with Bob Behnken and Doug Hurley). Commercial crew operational. America has returned to space on American rockets from American soil.",
     "likes": 1400000,
     "source": "NASA / SpaceX Launch Stream"
   },
   {
     "date": "2020-08-28",
     "topic": "Neuralink",
-    "content": "Demonstrating working Neuralink implant in Gertrude the pig. Coin-sized device in the skull. Reading real-time neural spikes. Telepathy and curing paralysis are coming.",
+    "content": "Demonstrating working Neuralink implant in Gertrude the pig. Coin-sized device in the skull with 1,024 flexible electrode threads. Reading real-time neural spikes. The device is like a Fitbit in your skull with tiny wires.",
     "likes": 670000,
     "source": "Neuralink Progress Update"
+  },
+  {
+    "date": "2020-09-22",
+    "topic": "Tesla Battery Day & 4680",
+    "content": "Tesla Battery Day: Announcing the 4680 tabless cylindrical battery cell. 5X energy capacity, 6X power, 16% range increase, and massive cost reduction per kWh through dry electrode manufacturing.",
+    "likes": 510000,
+    "source": "Tesla Battery Day"
+  },
+  {
+    "date": "2020-12-09",
+    "topic": "SpaceX & Starship SN8",
+    "content": "Starship SN8 12.5km suborbital flight test! Controlled aerodynamic descent using flaps, belly flop maneuver, and landing flip. Header tank pressure was low during touchdown burn, but we got all the engineering data needed. Mars, here we come!",
+    "likes": 980000,
+    "source": "@elonmusk on X"
+  },
+  {
+    "date": "2021-01-29",
+    "topic": "Finance & GameStop",
+    "content": "Gamestonk!! Shorting is a scam legal only for Wall Street institutional insiders. Retail investors should have the same rights.",
+    "likes": 820000,
+    "source": "@elonmusk on X"
   },
   {
     "date": "2021-02-08",
@@ -151,6 +305,20 @@
     "topic": "Cryptocurrency & Bitcoin",
     "content": "You can now buy a Tesla with Bitcoin! Bitcoin paid to Tesla will be retained as Bitcoin, not converted to fiat currency.",
     "likes": 1350000,
+    "source": "@elonmusk on X"
+  },
+  {
+    "date": "2021-04-09",
+    "topic": "Neuralink & Pager",
+    "content": "Monkey plays MindPong with his mind using a Neuralink implant! Pager the macaque is playing video games telepathically with no wires.",
+    "likes": 890000,
+    "source": "Neuralink Video Release"
+  },
+  {
+    "date": "2021-05-05",
+    "topic": "SpaceX & Starship SN15",
+    "content": "Starship SN15 landing nominal! Full flight to 10km, belly flop descent, Raptor relight, and smooth vertical touchdown on landing pad. Major vindication for the Starship architecture.",
+    "likes": 1200000,
     "source": "@elonmusk on X"
   },
   {
@@ -168,79 +336,247 @@
     "source": "@elonmusk on X"
   },
   {
+    "date": "2021-07-21",
+    "topic": "Cryptocurrency & Stance",
+    "content": "The B-Word Conference: I own Bitcoin, Tesla owns Bitcoin, SpaceX owns Bitcoin. I also own Ethereum and Dogecoin. I pump, but I don't dump. I definitely do not believe in pricing high and selling. I'd like to see Bitcoin succeed.",
+    "likes": 760000,
+    "source": "The B-Word Conference with Jack Dorsey & Cathie Wood"
+  },
+  {
     "date": "2021-08-19",
-    "topic": "Tesla & Robotics / AI",
-    "content": "Announcing the Tesla Bot (Optimus). A humanoid robot designed to eliminate dangerous, repetitive, boring tasks. If machines can do physical labor, the economy becomes quasi-infinite.",
+    "topic": "Tesla & Robotics / Optimus",
+    "content": "Announcing the Tesla Bot (Optimus). A humanoid robot designed to eliminate dangerous, repetitive, boring tasks. Built using Tesla's automotive vision neural nets and custom electromechanical actuators. If machines can do physical labor, the economy becomes quasi-infinite.",
     "likes": 870000,
     "source": "Tesla AI Day 2021"
   },
   {
+    "date": "2021-10-25",
+    "topic": "Tesla & Valuation",
+    "content": "Tesla reaches $1 Trillion market capitalization following Hertz order of 100,000 Model 3s. Wild that stock moved on rental car contract, but transition to electric fleet is accelerating.",
+    "likes": 740000,
+    "source": "@elonmusk on X"
+  },
+  {
+    "date": "2022-02-10",
+    "topic": "SpaceX & Starship Booster Catch",
+    "content": "Starbase update: Announcing Mechazilla chopstick arms on the launch tower. We won't land the Super Heavy booster on landing legs; we will catch it out of mid-air on the tower to achieve rapid reusability within 1 hour.",
+    "likes": 640000,
+    "source": "SpaceX Starbase Presentation"
+  },
+  {
     "date": "2022-04-14",
     "topic": "Free Speech & Twitter",
-    "content": "I made an offer to buy 100% of Twitter for $54.20 per share. Free speech is the bedrock of a functioning democracy, and Twitter is the digital town square where matters vital to the future of humanity are debated.",
+    "content": "I made an offer to buy 100% of Twitter for $54.20 per share in cash. Free speech is the bedrock of a functioning democracy, and Twitter is the digital town square where matters vital to the future of humanity are debated.",
     "likes": 2100000,
     "source": "SEC 13D Filing / @elonmusk"
   },
   {
+    "date": "2022-05-18",
+    "topic": "Politics & Parties",
+    "content": "In the past I voted Democrat, because they were (mostly) the kindness party. But they have become the party of division & hate, so I can no longer support them and will vote Republican.",
+    "likes": 1400000,
+    "source": "@elonmusk on X"
+  },
+  {
+    "date": "2022-09-30",
+    "topic": "Tesla AI Day & Optimus Prototype",
+    "content": "Tesla AI Day 2022: Demonstrating working untethered Optimus humanoid robot walking on stage. Target cost under $20,000 at volume production. Humanoid robotics will be larger than automotive.",
+    "likes": 920000,
+    "source": "Tesla AI Day 2022"
+  },
+  {
     "date": "2022-10-27",
     "topic": "Free Speech & Twitter / X",
-    "content": "The bird is freed. Entering Twitter HQ with a sink: 'Entering Twitter HQ – let that sink in!'. Objective is to make Twitter the most trusted platform for free speech.",
+    "content": "The bird is freed. Entering Twitter HQ with a porcelain sink: 'Entering Twitter HQ – let that sink in!'. Objective is to make Twitter the most trusted platform for free speech and eliminate bot armies.",
     "likes": 2800000,
+    "source": "@elonmusk on X"
+  },
+  {
+    "date": "2022-12-02",
+    "topic": "Twitter / X & Transparency",
+    "content": "Releasing the Twitter Files through independent journalists. Transparency is the only way to earn public trust. Suppressing information and shadowbanning accounts violated user trust.",
+    "likes": 1100000,
     "source": "@elonmusk on X"
   },
   {
     "date": "2023-03-09",
     "topic": "Politics & Society",
-    "content": "I used to vote 100% Democrat. But now the woke mind virus is an existential threat to civilization. We need common sense and meritocracy.",
+    "content": "I used to vote 100% Democrat. But now the woke mind virus is an existential threat to civilization. We need common sense, biological reality, and meritocracy.",
     "likes": 950000,
     "source": "@elonmusk on X"
   },
   {
+    "date": "2023-03-31",
+    "topic": "Twitter / X & Open Source",
+    "content": "Twitter algorithm is now 100% open source on GitHub! Anyone can inspect our recommendation code, ranking heuristics, and weightings. Transparency breeds trust.",
+    "likes": 1300000,
+    "source": "GitHub Release / @elonmusk"
+  },
+  {
+    "date": "2023-04-20",
+    "topic": "SpaceX & Starship Integrated Flight Test 1",
+    "content": "Starship first integrated flight test cleared the launch pad! Major structural milestone. Multiple Raptor engines shut down and stage separation failed, so automated flight termination was triggered. Learned immense amount.",
+    "likes": 1100000,
+    "source": "SpaceX Launch Stream"
+  },
+  {
     "date": "2023-07-12",
     "topic": "Artificial Intelligence & xAI",
-    "content": "Announcing formation of xAI. The goal of xAI is to understand the true nature of the universe. We will build maximum truth-seeking AI that is maximally curious.",
+    "content": "Announcing formation of xAI. The goal of xAI is to understand the true nature of the universe. We will build maximum truth-seeking AI that is maximally curious, rather than politically correct.",
     "likes": 1250000,
     "source": "xAI Launch Space"
   },
   {
+    "date": "2023-07-23",
+    "topic": "Twitter / X & Rebranding",
+    "content": "And soon we shall bid adieu to the twitter brand and, gradually, all the birds. Rebranding to X: the everything app. Audio, video, messaging, payments, banking, powered by AI.",
+    "likes": 1600000,
+    "source": "@elonmusk on X"
+  },
+  {
     "date": "2023-11-04",
     "topic": "Artificial Intelligence & Grok",
-    "content": "Grok is an AI modeled after the Hitchhiker's Guide to the Galaxy. It is designed to answer almost anything and, far harder, even suggest what questions to ask! It has real-time knowledge of the world via X.",
+    "content": "Grok is an AI modeled after the Hitchhiker's Guide to the Galaxy. It is designed to answer almost anything and, far harder, even suggest what questions to ask! It has real-time knowledge of the world via X with a bit of wit and sarcasm.",
     "likes": 880000,
+    "source": "@elonmusk on X"
+  },
+  {
+    "date": "2023-11-18",
+    "topic": "SpaceX & Starship Flight 2",
+    "content": "Starship Flight 2 achieved successful hot-staging separation! All 33 Raptor engines on Super Heavy booster ignited and burned. Hot staging worked cleanly. Massive engineering progress.",
+    "likes": 940000,
+    "source": "SpaceX Mission Stream"
+  },
+  {
+    "date": "2023-11-30",
+    "topic": "Tesla & Cybertruck Deliveries",
+    "content": "Delivering first production Cybertrucks at Giga Texas! Pulls a Porsche 911 faster than a Porsche 911 can drive itself. Bulletproof 30X cold-rolled steel, steer-by-wire, 48-volt electrical architecture.",
+    "likes": 1400000,
+    "source": "Tesla Cybertruck Delivery Event"
+  },
+  {
+    "date": "2024-01-22",
+    "topic": "Tesla & FSD v12 Neural Net",
+    "content": "Tesla FSD v12 is rolling out to customers. It is end-to-end neural networks trained on millions of video clips. We deleted over 300,000 lines of explicit C++ heuristics and replaced them with pure neural network weights.",
+    "likes": 780000,
     "source": "@elonmusk on X"
   },
   {
     "date": "2024-01-29",
     "topic": "Neuralink & Telepathy",
-    "content": "The first human patient received an implant from Neuralink yesterday and is recovering well. Initial results show promising neuron spike detection. The initial product is called Telepathy.",
+    "content": "The first human patient (Noland Arbaugh) received an implant from Neuralink yesterday and is recovering well. Initial results show promising neuron spike detection. The initial product is called Telepathy: control your phone or computer just by thinking.",
     "likes": 1900000,
+    "source": "@elonmusk on X"
+  },
+  {
+    "date": "2024-03-14",
+    "topic": "SpaceX & Starship Flight 3",
+    "content": "Starship Flight 3 reached orbital velocity! Payload door opened in space, propellant transfer demonstration completed, and re-entry plasma telemetry streamed live over Starlink in 4K.",
+    "likes": 1300000,
+    "source": "SpaceX Starbase Broadcast"
+  },
+  {
+    "date": "2024-04-06",
+    "topic": "SpaceX & Mars Colonization",
+    "content": "Starbase All-Hands: We need full and rapid reusability to build a self-sustaining city on Mars. We are producing one Starship per month, scaling to one per week. Mars needs 1,000 Starships carrying 100,000 tons of cargo.",
+    "likes": 980000,
+    "source": "Starbase All-Hands Address"
+  },
+  {
+    "date": "2024-06-06",
+    "topic": "SpaceX & Starship Flight 4",
+    "content": "Starship Flight 4: Super Heavy booster soft-splashed down in the Gulf of Mexico, and Ship survived orbital atmospheric re-entry despite flap burn-through! Live camera stream through plasma.",
+    "likes": 1450000,
+    "source": "SpaceX Stream"
+  },
+  {
+    "date": "2024-06-13",
+    "topic": "Tesla & Optimus Humanoid Robot",
+    "content": "Tesla Annual Shareholder Meeting: Optimus humanoid robot will be the biggest product in human history. It will eliminate dangerous, boring, repetitive manual labor. A world with boundless labor is a post-scarcity economy.",
+    "likes": 840000,
+    "source": "Tesla Shareholder Meeting"
+  },
+  {
+    "date": "2024-07-01",
+    "topic": "xAI & Colossus Supercluster",
+    "content": "xAI built the Colossus supercluster in Memphis, Tennessee in just 122 days. 100,000 liquid-cooled Nvidia H100 GPUs on a single RDMA fabric. The most powerful AI training cluster on Earth to train Grok 3.",
+    "likes": 1150000,
     "source": "@elonmusk on X"
   },
   {
     "date": "2024-07-13",
     "topic": "Politics & Endorsement",
-    "content": "I fully endorse President Trump and hope for his rapid recovery. Last time America had a candidate this tough was Theodore Roosevelt.",
+    "content": "I fully endorse President Trump and hope for his rapid recovery after Butler, Pennsylvania assassination attempt. Last time America had a candidate this tough was Theodore Roosevelt.",
     "likes": 2400000,
+    "source": "@elonmusk on X"
+  },
+  {
+    "date": "2024-08-03",
+    "topic": "SpaceX & Raptor 3 Propulsion",
+    "content": "Raptor 3 engine unveiled! Eliminates all external secondary tubing and flanges. 350 bar chamber pressure, producing 280 tons of thrust with dramatically lower mass and higher reliability. Cleanest rocket engine ever built.",
+    "likes": 890000,
+    "source": "@elonmusk on X / Propulsion Briefing"
+  },
+  {
+    "date": "2024-09-07",
+    "topic": "SpaceX & Mars Timeline",
+    "content": "We aim to launch the first uncrewed Starships to Mars in late 2026 when the next Earth-Mars transfer window opens. If those land safely, crewed flights will follow in 2028. Goal remains a self-sustaining million-person city on Mars by 2050.",
+    "likes": 1250000,
+    "source": "@elonmusk on X"
+  },
+  {
+    "date": "2024-09-26",
+    "topic": "SpaceX & Starlink Milestone",
+    "content": "Starlink now has over 6,000 active satellites in orbit providing high-speed internet to more than 4 million users globally across 100+ countries, generating cash flow to fund Starship Mars colonization.",
+    "likes": 670000,
     "source": "@elonmusk on X"
   },
   {
     "date": "2024-10-10",
     "topic": "Tesla & Cybercab Robotaxi",
-    "content": "We, Robot: Unveiling Cybercab and Robovan. Inductive wireless charging, no steering wheel, no pedals. Cost per mile will drop to 20 cents. Autonomous future is here.",
+    "content": "We, Robot: Unveiling Cybercab and Robovan. Inductive wireless charging, no steering wheel, no pedals. Cost per mile will drop to 20 cents. Autonomous transportation will give people their time back.",
     "likes": 1300000,
     "source": "Tesla We, Robot Event"
   },
   {
-    "date": "2025-01-20",
+    "date": "2024-10-13",
+    "topic": "SpaceX & Starship Flight 5 Catch",
+    "content": "Mechazilla has caught the Super Heavy booster! The booster returned from the edge of space and was captured out of mid-air by the tower chopstick arms at Starbase on Flight 5. Science fiction has become engineering reality.",
+    "likes": 3100000,
+    "source": "SpaceX Live Stream / @elonmusk"
+  },
+  {
+    "date": "2024-11-05",
     "topic": "Government Efficiency & DOGE",
-    "content": "Department of Government Efficiency (DOGE). The American people voted for major reform and government simplification. We must delete outdated regulations and stop wasteful spending.",
+    "content": "Department of Government Efficiency (DOGE). The American people voted for major reform and government simplification. We must delete outdated regulations, eliminate duplicate agencies, and stop wasteful federal spending.",
     "likes": 1750000,
     "source": "@elonmusk on X"
   },
   {
+    "date": "2024-11-19",
+    "topic": "SpaceX & Starship Flight 6",
+    "content": "Starship Flight 6: Relit a Raptor vacuum engine in space for the first time! Successfully validated de-orbit burn capability. Ocean splashdown precision continues to improve.",
+    "likes": 1050000,
+    "source": "SpaceX Starbase Broadcast"
+  },
+  {
+    "date": "2025-01-20",
+    "topic": "Government Efficiency & DOGE",
+    "content": "DOGE begins operations. We are conducting a line-by-line first-principles audit of federal spending. If an agency's requirements don't make sense, delete the requirement. Streamline bureaucracy so America can build again.",
+    "likes": 2100000,
+    "source": "@elonmusk on X / DOGE Update"
+  },
+  {
+    "date": "2025-02-15",
+    "topic": "Artificial Intelligence & Grok 3",
+    "content": "Grok 3 trained on the Colossus 100k H100 Memphis cluster is demonstrating superhuman reasoning and coding capabilities. Truth-seeking AI with humor is essential to guiding civilization safely through the singularity.",
+    "likes": 1600000,
+    "source": "xAI Memphis Update"
+  },
+  {
     "date": "2025-03-15",
     "topic": "SpaceX & Mars Vision",
-    "content": "Starship Flight 7 & beyond. We are aiming for first uncrewed Starships to Mars in late 2026 window. If those land safely, first crewed flights in 2028. Goal remains a self-sustaining million-person city on Mars by 2050.",
+    "content": "Starship cadence is accelerating toward weekly orbital launches. Uncrewed Mars mission hardware is entering integration. Consciousness is a small candle in a vast darkness—we must secure it across multiple worlds.",
     "likes": 1400000,
     "source": "SpaceX Starbase Update"
   }

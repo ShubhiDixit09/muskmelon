@@ -9,8 +9,8 @@ if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY.startsWith('sk-') &
 }
 
 /**
- * Time-aware retriever with VectorStore search and automatic Web Scraper fallback.
- * If the local index or Weaviate has no matching info, it triggers live web discovery.
+ * High-performance, time-aware hybrid retriever.
+ * Blends local BM25 + dense semantic scoring with web fallback.
  */
 export async function retrieveContext(
   query: string,
@@ -30,11 +30,11 @@ export async function retrieveContext(
         });
         queryEmbedding = res.data[0].embedding;
       } catch (err) {
-        // Fallback to text match
+        // Fallback to local hybrid search
       }
     }
 
-    // 1. Search Vector Store / Weaviate
+    // 1. Search Vector Store / Local Hybrid Index
     let results: { chunk: TemporalChunk; similarity: number }[] = [];
 
     if (mode === 'now') {
@@ -49,25 +49,30 @@ export async function retrieveContext(
       results = await VectorStore.search(queryEmbedding, topK, undefined, query);
     }
 
-    // 2. If vector search found no relevant chunks -> TRIGGER LIVE WEB SCRAPING
-    if (results.length === 0 || results.every(r => r.similarity < 0.15)) {
-      console.log(`🔍 [RAG NOTICE] No high-confidence vector matches for "${query}". Invoking live Web Scraper discovery...`);
-      const webChunks = await scrapeFreshWebContext(query);
-      if (webChunks.length > 0) {
-        return webChunks;
+    // 2. If vector search found matches with good similarity, return them directly
+    if (results.length > 0 && results.some(r => r.similarity >= 0.15)) {
+      return results.map(r => r.chunk);
+    }
+
+    // 3. If local index has low similarity and not in serverless, try web scraper discovery
+    if (!process.env.VERCEL && (results.length === 0 || results.every(r => r.similarity < 0.10))) {
+      try {
+        const webChunks = await scrapeFreshWebContext(query);
+        if (webChunks.length > 0) {
+          return webChunks;
+        }
+      } catch (err) {
+        // Continue to fallback
       }
     }
 
-    // 3. If web scraper is empty, return top fallback vector chunks
-    if (results.length === 0) {
-      results = await VectorStore.search([], topK, asOfDate, query);
-    }
-
+    // 4. Return top candidate chunks from local database
     return results.map(r => r.chunk);
   } catch (error) {
-    console.error('Error retrieving context, attempting web scraper:', error);
+    console.error('Error retrieving context:', error);
     try {
-      return await scrapeFreshWebContext(query);
+      const fallback = await VectorStore.search([], topK, asOfDate, query);
+      return fallback.map(r => r.chunk);
     } catch {
       return [];
     }

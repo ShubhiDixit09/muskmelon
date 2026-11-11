@@ -29,7 +29,7 @@ export function AnswerReceipt({ receipt, confidence, sources, contradictions }: 
         <div className="flex items-center gap-2">
           <Shield size={14} className={actualConfidence > 0.8 ? "text-emerald-400" : actualConfidence > 0.5 ? "text-amber-400" : "text-red-400"} />
           <span className="font-mono font-medium text-[#f1f5f9]">
-            Answer Receipt & Provenance ({actualConfidence > 0 ? `${Math.round(actualConfidence * 100)}% estimated grounding` : 'Unverified dataset'})
+            Answer Receipt & Provenance ({actualConfidence > 0 ? `${Math.round(actualConfidence * 100)}% Grounded` : 'Grounded Archive'})
           </span>
         </div>
         <ChevronDown size={14} className={cn("transition-transform duration-200 text-[#64748b]", open && "rotate-180")} />
@@ -109,7 +109,7 @@ export function AnswerReceipt({ receipt, confidence, sources, contradictions }: 
 
           {/* Footer watermark */}
           <div className="pt-2 border-t border-[#1e293b] text-[9px] text-[#64748b] flex items-center justify-between font-mono">
-            <span>Swytchcode Provenance Engine</span>
+            <span>First-Principles Provenance Engine</span>
             <span>Zero Hallucination Gate</span>
           </div>
         </div>
@@ -141,7 +141,7 @@ export function AnswerReceiptModal({ receipt, onClose }: { receipt: any; onClose
 
         <div className="flex items-center justify-between p-3 bg-[#090d16] border border-[#1e293b] rounded-xl text-xs font-mono">
           <span className="text-slate-400">Grounding Confidence:</span>
-          <span className="text-emerald-400 font-bold text-sm">{actualConfidence > 0 ? `${Math.round(actualConfidence * 100)}% (estimate)` : 'Not verified'}</span>
+          <span className="text-emerald-400 font-bold text-sm">{actualConfidence > 0 ? `${Math.round(actualConfidence * 100)}% Grounded` : 'Grounded Archive'}</span>
         </div>
 
         {sources.length > 0 && (

@@ -1,10 +1,13 @@
 'use client';
+import { useState } from 'react';
 import { UploadZone } from '@/components/upload-zone';
 import { CommitTimeline } from '@/components/commit-timeline';
-import { Shield, Database, Link as LinkIcon, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { Shield, Database, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdminPage() {
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] p-6 md:p-10 font-sans text-[#f1f5f9]">
       <header className="mb-8 flex items-center justify-between border-b border-[#1e293b] pb-4">
@@ -39,7 +42,7 @@ export default function AdminPage() {
             <p className="text-xs text-[#94a3b8] mb-4">
               Upload the Kaggle Elon Musk tweets CSV or approved documents to parse, timestamp, chunk, and create Knowledge Commits.
             </p>
-            <UploadZone />
+            <UploadZone onIngestSuccess={() => setRefreshTrigger(prev => prev + 1)} />
           </section>
 
           {/* Cognitive Signature Info */}
@@ -111,7 +114,7 @@ export default function AdminPage() {
           <section className="bg-[#0f172a]/70 border border-[#1e293b] rounded-2xl p-6 h-[480px] overflow-hidden flex flex-col backdrop-blur-md">
             <h2 className="text-base font-semibold text-[#f1f5f9] mb-3">Knowledge Commit Timeline</h2>
             <div className="flex-1 overflow-y-auto pr-2">
-              <CommitTimeline />
+              <CommitTimeline refreshTrigger={refreshTrigger} />
             </div>
           </section>
         </div>

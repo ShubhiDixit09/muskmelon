@@ -2,32 +2,70 @@ import fs from 'node:fs/promises';
 import { existsSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { KnowledgeCommit } from '../types';
+import bundledSeedData from '../../../data/musk/elon_musk_dataset_2010_2025.json';
 
+const IS_SERVERLESS = Boolean(process.env.VERCEL);
 const DATA_DIR = path.join(process.cwd(), '.data');
 const STORE_PATH = path.join(DATA_DIR, 'commits.json');
 
+let inMemoryCommitsCache: KnowledgeCommit[] | null = null;
+
 // Ensure data directory exists
-if (!existsSync(DATA_DIR)) {
+if (!IS_SERVERLESS && !existsSync(DATA_DIR)) {
   mkdirSync(DATA_DIR, { recursive: true });
 }
 
-/**
- * Load commits from JSON store
- */
-async function loadCommits(): Promise<KnowledgeCommit[]> {
-  try {
-    const data = await fs.readFile(STORE_PATH, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    return []; // Return empty array if file doesn't exist or is invalid
-  }
+function getSeededCommits(): KnowledgeCommit[] {
+  return (bundledSeedData as any[]).map((item, idx) => ({
+    id: `commit-${item.date.replace(/-/g, '')}-${idx}`,
+    timestamp: item.date,
+    ingestedAt: `${item.date}T12:00:00.000Z`,
+    source: item.source || '@elonmusk on X',
+    sourceType: 'tweet',
+    topic: item.topic || 'General',
+    content: item.content,
+    hash: `sha256-${item.date.replace(/-/g, '')}-${idx}`
+  }));
 }
 
 /**
- * Save commits to JSON store
+ * Load commits from JSON store with automatic historical dataset seeding
+ */
+async function loadCommits(): Promise<KnowledgeCommit[]> {
+  if (inMemoryCommitsCache && inMemoryCommitsCache.length > 0) {
+    return inMemoryCommitsCache;
+  }
+
+  try {
+    if (!IS_SERVERLESS && existsSync(STORE_PATH)) {
+      const data = await fs.readFile(STORE_PATH, 'utf-8');
+      const parsed = JSON.parse(data);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        inMemoryCommitsCache = parsed;
+        return parsed;
+      }
+    }
+  } catch (error) {
+    // Fall back to seed commits
+  }
+
+  // Auto-seed from comprehensive historical dataset
+  const seeded = getSeededCommits();
+  inMemoryCommitsCache = seeded;
+  if (!IS_SERVERLESS) {
+    await saveCommits(seeded).catch(() => {});
+  }
+  return seeded;
+}
+
+/**
+ * Save commits to JSON store and update in-memory cache
  */
 async function saveCommits(commits: KnowledgeCommit[]): Promise<void> {
-  await fs.writeFile(STORE_PATH, JSON.stringify(commits, null, 2), 'utf-8');
+  inMemoryCommitsCache = commits;
+  if (!IS_SERVERLESS) {
+    await fs.writeFile(STORE_PATH, JSON.stringify(commits, null, 2), 'utf-8');
+  }
 }
 
 /**
@@ -35,7 +73,7 @@ async function saveCommits(commits: KnowledgeCommit[]): Promise<void> {
  */
 export async function addCommit(commit: KnowledgeCommit): Promise<void> {
   const commits = await loadCommits();
-  commits.push(commit);
+  commits.unshift(commit);
   await saveCommits(commits);
 }
 
@@ -72,15 +110,15 @@ export async function getCommitsByDateRange(from: string, to: string): Promise<K
  */
 export async function getCommitsByTopic(topic: string): Promise<KnowledgeCommit[]> {
   const commits = await loadCommits();
-  return commits.filter(c => c.topic.toLowerCase() === topic.toLowerCase());
+  return commits.filter(c => c.topic.toLowerCase().includes(topic.toLowerCase()));
 }
 
 /**
- * Get the full timeline of commits, sorted by timestamp
+ * Get the full timeline of commits, sorted by timestamp descending (newest first)
  */
 export async function getCommitTimeline(): Promise<KnowledgeCommit[]> {
   const commits = await loadCommits();
-  return commits.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
+  return commits.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 }
 
 /**

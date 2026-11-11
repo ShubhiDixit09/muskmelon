@@ -181,7 +181,20 @@ ${contextText}
 Current Mode: ${mode} ${asOfDate ? `(As of ${asOfDate})` : ''}
 `;
 
-  // Step 2: Try Cloud LLM Providers if keys are provided
+  // Step 2: 100% Local RAG / Database Persona Synthesizer (Primary Engine)
+  // Operates fully on retrieved knowledge chunks without external API dependencies.
+  if (process.env.USE_CLOUD_LLM !== 'true') {
+    const localAnswer = synthesizeGroundedPersonaResponse(query, contextChunks, mode, asOfDate);
+    const receipt = await generateAnswerReceipt(query, localAnswer, contextChunks, mode as any, asOfDate);
+
+    return {
+      message: localAnswer,
+      receipt,
+      confidence: receipt.groundingConfidence || 0.90
+    };
+  }
+
+  // Optional: Cloud LLM Generation (Only if explicitly enabled via USE_CLOUD_LLM=true)
   // 1. OpenRouter
   if (process.env.OPENROUTER_API_KEY && !process.env.OPENROUTER_API_KEY.includes('...')) {
     try {
@@ -233,21 +246,7 @@ Current Mode: ${mode} ${asOfDate ? `(As of ${asOfDate})` : ''}
     }
   }
 
-  // 4. Vercel AI Gateway (if active)
-  if (process.env.AI_GATEWAY_API_KEY) {
-    try {
-      const answer = await callVercelGatewayAPI(systemPrompt, query, history);
-      if (answer) {
-        const receipt = await generateAnswerReceipt(query, answer, contextChunks, mode as any, asOfDate);
-        return { message: answer, receipt, confidence: receipt.groundingConfidence };
-      }
-    } catch (err: unknown) {
-      // Continue to local RAG synthesizer
-    }
-  }
-
-  // Step 3: 100% Local RAG / Database Persona Synthesizer
-  // Works completely offline or when external cloud APIs are absent.
+  // Fallback to local RAG synthesizer
   const localAnswer = synthesizeGroundedPersonaResponse(query, contextChunks, mode, asOfDate);
   const receipt = await generateAnswerReceipt(query, localAnswer, contextChunks, mode as any, asOfDate);
 

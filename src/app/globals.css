@@ -535,45 +535,60 @@ body {
 .mode-switcher {
   display: flex;
   align-items: center;
-  gap: 4px;
-  background: rgba(0, 0, 0, 0.25);
-  padding: 3px;
-  border-radius: 12px;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 4px 6px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
 }
 
 .mode-btn {
-  padding: 7px 16px;
+  padding: 9px 20px;
   border-radius: 10px;
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;
-  border: none;
-  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
-  gap: 7px;
-  letter-spacing: 0.01em;
+  gap: 8px;
+  letter-spacing: 0.015em;
   font-family: var(--font-main);
   background: transparent;
-  color: #94a3b8;
+  color: #cbd5e1;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.mode-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
 }
 
 .mode-btn.active-now {
-  background: rgba(16, 185, 129, 0.15);
+  background: rgba(16, 185, 129, 0.22);
   color: #34d399;
-  box-shadow: 0 0 1px rgba(16, 185, 129, 0.4);
+  border-color: rgba(52, 211, 153, 0.45);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.28);
 }
 
 .mode-btn.active-time {
-  background: rgba(245, 158, 11, 0.15);
+  background: rgba(245, 158, 11, 0.22);
   color: #fbbf24;
-  box-shadow: 0 0 1px rgba(245, 158, 11, 0.4);
+  border-color: rgba(251, 191, 36, 0.45);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.28);
 }
 
 .mode-btn.active-diff {
-  background: rgba(168, 85, 247, 0.15);
+  background: rgba(168, 85, 247, 0.22);
   color: #c084fc;
-  box-shadow: 0 0 1px rgba(168, 85, 247, 0.4);
+  border-color: rgba(192, 132, 252, 0.45);
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.28);
 }
 
 /* ── Top Navigation Bar ────────────────────────────────────────────────── */
@@ -586,10 +601,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 80px;
-  background: linear-gradient(180deg, rgba(12, 10, 8, 0.65) 0%, rgba(12, 10, 8, 0.3) 70%, transparent 100%);
-  border-bottom: none;
-  box-shadow: none;
+  padding: 12px 80px;
+  min-height: 64px;
+  background: linear-gradient(180deg, rgba(8, 11, 20, 0.88) 0%, rgba(8, 11, 20, 0.55) 75%, transparent 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 16px;
 }
 
 /* ── Mic Recording Animation ───────────────────────────────────────────── */
@@ -608,17 +626,39 @@ body {
 /* ── Date Input Styling ────────────────────────────────────────────────── */
 .date-input {
   background-color: #1e293b;
-  border: 1px solid #475569;
-  border-radius: 6px;
-  color: #ffffff;
-  padding: 3px 8px;
-  font-size: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #f8fafc;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
   font-family: var(--font-screen);
   outline: none;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.date-input:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background-color: #243247;
 }
 
 .date-input:focus {
   border-color: var(--accent);
+  background-color: #243247;
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.25);
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  filter: invert(0.88);
+  cursor: pointer;
+  padding-left: 4px;
+  transition: filter 0.15s ease;
+}
+
+.date-input::-webkit-calendar-picker-indicator:hover {
+  filter: invert(1);
 }
 
 /* ── Answer Receipt Modal Fade ─────────────────────────────────────────── */
@@ -659,11 +699,25 @@ body {
 }
 
 /* ── Responsive ────────────────────────────────────────────────────────── */
-@media (max-width: 900px) {
+@media (max-width: 1240px) {
   .top-nav {
-    padding: 10px 20px;
+    padding: 10px 32px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 980px) {
+  .top-nav {
+    padding: 10px 16px;
+    gap: 8px;
   }
 
+  .top-nav .nav-badges {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
   .notebook {
     max-width: 100%;
     width: 100%;

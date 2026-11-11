@@ -20,31 +20,35 @@ interface CommitItem {
   content: string;
 }
 
-const DEFAULT_COMMITS: CommitItem[] = [
-  { id: 'c-1', timestamp: '2025-01-20', topic: 'politics', source: '@elonmusk on X', content: 'DOGE begins operations. Auditing federal bureaucracy from first principles.' },
-  { id: 'c-2', timestamp: '2024-10-13', topic: 'spacex', source: 'SpaceX Broadcast', content: 'Mechazilla has caught the Super Heavy booster back at the launch tower on Flight 5!' },
-  { id: 'c-3', timestamp: '2024-10-10', topic: 'tesla', source: 'Tesla We, Robot Event', content: 'Unveiling Cybercab and Robovan: wireless inductive charging, no pedals, no steering wheel.' },
-  { id: 'c-4', timestamp: '2024-07-01', topic: 'ai', source: '@elonmusk on X', content: 'xAI Colossus supercluster built in 122 days in Memphis: 100,000 liquid-cooled H100 GPUs.' },
-  { id: 'c-5', timestamp: '2024-01-29', topic: 'ai', source: 'Neuralink Update', content: 'First human patient received a Neuralink Telepathy implant and is recovering well.' },
-  { id: 'c-6', timestamp: '2023-11-30', topic: 'tesla', source: 'Delivery Event', content: 'First production Cybertruck customer deliveries at Giga Texas.' },
-  { id: 'c-7', timestamp: '2023-07-12', topic: 'ai', source: 'xAI Launch', content: 'Announcing xAI: mission is to understand the true nature of the universe.' }
-];
+interface CommitTimelineProps {
+  refreshTrigger?: number;
+}
 
-export function CommitTimeline() {
-  const [commits, setCommits] = useState<CommitItem[]>(DEFAULT_COMMITS);
+export function CommitTimeline({ refreshTrigger = 0 }: CommitTimelineProps) {
+  const [commits, setCommits] = useState<CommitItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     fetch('/api/commits')
       .then(res => res.json())
       .then(data => {
         if (data && Array.isArray(data.commits) && data.commits.length > 0) {
-          setCommits(data.commits.slice(-15).reverse());
+          setCommits(data.commits.slice(0, 30));
         }
       })
       .catch(() => {})
       .finally(() => setLoading(false));
-  }, []);
+  }, [refreshTrigger]);
+
+  if (loading && commits.length === 0) {
+    return (
+      <div className="flex items-center justify-center p-8 text-xs text-[#64748b] gap-2">
+        <Loader2 className="animate-spin" size={14} />
+        <span>Loading knowledge timeline...</span>
+      </div>
+    );
+  }
 
   return (
     <div className="relative pl-6 space-y-4 before:absolute before:inset-y-0 before:left-2 before:w-0.5 before:bg-[#1e293b]">

@@ -443,20 +443,20 @@ export default function Home() {
           {/* ── Top Nav Bar ───────────────────────────────────────────── */}
           <nav className="top-nav">
             {/* Brand */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
               <div style={{
                 position: 'relative',
-                width: '36px',
-                height: '36px',
+                width: '38px',
+                height: '38px',
                 borderRadius: '12px',
                 background: 'linear-gradient(135deg, #f97316 0%, #f59e0b 50%, #ef4444 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 2px 12px rgba(249, 115, 22, 0.3)',
+                boxShadow: '0 2px 14px rgba(249, 115, 22, 0.35)',
                 flexShrink: 0
               }}>
-                <span style={{ fontWeight: 900, fontSize: '17px', color: '#fff', lineHeight: 1 }}>M</span>
+                <span style={{ fontWeight: 900, fontSize: '18px', color: '#fff', lineHeight: 1 }}>M</span>
                 <span style={{
                   position: 'absolute', bottom: '-1px', right: '-1px',
                   width: '9px', height: '9px', borderRadius: '50%',
@@ -466,15 +466,15 @@ export default function Home() {
                 }} />
               </div>
               <div>
-                <div style={{ fontWeight: 800, fontSize: '15px', letterSpacing: '0.04em', color: '#f1f5f9', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ fontWeight: 800, fontSize: '15.5px', letterSpacing: '0.04em', color: '#f1f5f9', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <span>Muskmelon</span>
                   <span style={{
-                    fontSize: '9px', padding: '2px 7px', borderRadius: '6px',
+                    fontSize: '9.5px', padding: '2px 7px', borderRadius: '6px',
                     background: 'rgba(249, 115, 22, 0.2)',
                     color: '#fb923c', fontWeight: 600
                   }}>v4.2 Pro</span>
                 </div>
-                <div style={{ fontSize: '11px', color: '#64748b', fontWeight: 500, marginTop: '1px' }}>
+                <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 500, marginTop: '1px' }}>
                   Version-Controlled Knowledge Twin
                 </div>
               </div>
@@ -486,56 +486,59 @@ export default function Home() {
                 className={`mode-btn ${mode === 'now' ? 'active-now' : ''}`}
                 onClick={() => setMode('now')}
               >
-                <Zap size={14} style={{ opacity: mode === 'now' ? 1 : 0.6 }} />
+                <Zap size={16} style={{ opacity: mode === 'now' ? 1 : 0.7 }} />
                 <span>Now Mode</span>
               </button>
               <button
                 className={`mode-btn ${mode === 'time' ? 'active-time' : ''}`}
                 onClick={() => setMode('time')}
               >
-                <Clock size={14} style={{ opacity: mode === 'time' ? 1 : 0.6 }} />
+                <Clock size={16} style={{ opacity: mode === 'time' ? 1 : 0.7 }} />
                 <span>Time Lens</span>
               </button>
               <button
                 className={`mode-btn ${mode === 'diff' ? 'active-diff' : ''}`}
                 onClick={() => setMode('diff')}
               >
-                <GitCompare size={14} style={{ opacity: mode === 'diff' ? 1 : 0.6 }} />
+                <GitCompare size={16} style={{ opacity: mode === 'diff' ? 1 : 0.7 }} />
                 <span>Belief Diff</span>
               </button>
             </div>
 
             {/* Right Status Badges */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div className="nav-badges" style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
               <div style={{
                 display: 'flex', alignItems: 'center', gap: '6px',
-                padding: '5px 12px',
+                padding: '6px 14px',
                 backgroundColor: 'rgba(56, 189, 248, 0.12)',
-                borderRadius: '9999px', fontSize: '10px', fontWeight: 600, color: '#7dd3fc'
+                borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#7dd3fc',
+                whiteSpace: 'nowrap'
               }}>
-                <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: '#38bdf8', boxShadow: '0 0 4px rgba(56, 189, 248, 0.5)' }} />
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#38bdf8', boxShadow: '0 0 6px rgba(56, 189, 248, 0.6)' }} />
                 <span>{serviceStatus === null ? 'Loading RAG' : 'Hybrid RAG (2010–2025)'}</span>
               </div>
               <div style={{
                 display: 'flex', alignItems: 'center', gap: '6px',
-                padding: '5px 12px',
+                padding: '6px 14px',
                 backgroundColor: 'rgba(16, 185, 129, 0.12)',
-                borderRadius: '9999px', fontSize: '10px', fontWeight: 600, color: '#6ee7b7'
+                borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#6ee7b7',
+                whiteSpace: 'nowrap'
               }}>
-                <Shield size={11} style={{ opacity: 0.85 }} />
+                <Shield size={13} style={{ opacity: 0.85 }} />
                 <span>{serviceStatus?.modelKeyConfigured ? 'Cloud AI Active' : 'Grounded Persona Active'}</span>
               </div>
               <Link
                 href="/admin"
                 style={{
                   display: 'flex', alignItems: 'center', gap: '6px',
-                  padding: '5px 14px',
+                  padding: '6px 15px',
                   backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                  borderRadius: '9999px', fontSize: '10px', fontWeight: 600,
-                  color: '#e2e8f0', textDecoration: 'none', transition: 'all 0.2s ease'
+                  borderRadius: '9999px', fontSize: '11px', fontWeight: 600,
+                  color: '#e2e8f0', textDecoration: 'none', transition: 'all 0.2s ease',
+                  whiteSpace: 'nowrap'
                 }}
               >
-                <Database size={12} color="#fb923c" />
+                <Database size={13} color="#fb923c" />
                 <span>Audit Admin</span>
               </Link>
             </div>
@@ -546,7 +549,7 @@ export default function Home() {
             className="btn-icon btn-sessions-toggle"
             onClick={() => setSessionsOpen(!sessionsOpen)}
             title="Chat Sessions"
-            style={{ top: '76px' }}
+            style={{ top: '80px' }}
           >
             <Menu size={20} />
           </button>
@@ -556,7 +559,7 @@ export default function Home() {
             className="btn-icon btn-settings-toggle"
             onClick={() => setSettingsOpen(!settingsOpen)}
             title="Settings & Memory"
-            style={{ top: '76px' }}
+            style={{ top: '80px' }}
           >
             <Settings size={18} />
           </button>
@@ -564,15 +567,16 @@ export default function Home() {
           {/* ── Mode Parameters (Time/Diff date inputs) ──────────────── */}
           {mode === 'time' && (
             <div style={{
-              position: 'absolute', top: '70px', left: '50%', transform: 'translateX(-50%)',
-              zIndex: 60, padding: '8px 20px',
-              background: 'rgba(15, 23, 42, 0.95)', backdropFilter: 'blur(12px)',
-              border: '1px solid rgba(245, 158, 11, 0.5)', borderRadius: '12px',
-              display: 'flex', alignItems: 'center', gap: '12px',
-              fontSize: '12px', boxShadow: '0 0 20px rgba(245, 158, 11, 0.12)'
+              position: 'absolute', top: '80px', left: '50%', transform: 'translateX(-50%)',
+              zIndex: 60, padding: '10px 24px',
+              background: 'rgba(15, 23, 42, 0.94)', backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(245, 158, 11, 0.45)', borderRadius: '14px',
+              display: 'flex', alignItems: 'center', gap: '14px',
+              fontSize: '13px', boxShadow: '0 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.18)',
+              whiteSpace: 'nowrap'
             }}>
-              <span style={{ color: '#fbbf24', fontFamily: 'var(--font-screen)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Clock size={14} /> Knowledge As Of:
+              <span style={{ color: '#fbbf24', fontFamily: 'var(--font-screen)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13.5px', letterSpacing: '0.02em' }}>
+                <Clock size={16} /> Knowledge As Of:
               </span>
               <input
                 type="date" className="date-input"
@@ -585,18 +589,19 @@ export default function Home() {
 
           {mode === 'diff' && (
             <div style={{
-              position: 'absolute', top: '70px', left: '50%', transform: 'translateX(-50%)',
-              zIndex: 60, padding: '8px 20px',
-              background: 'rgba(15, 23, 42, 0.95)', backdropFilter: 'blur(12px)',
-              border: '1px solid rgba(168, 85, 247, 0.5)', borderRadius: '12px',
-              display: 'flex', alignItems: 'center', gap: '10px',
-              fontSize: '11px', boxShadow: '0 0 20px rgba(168, 85, 247, 0.12)'
+              position: 'absolute', top: '80px', left: '50%', transform: 'translateX(-50%)',
+              zIndex: 60, padding: '10px 24px',
+              background: 'rgba(15, 23, 42, 0.94)', backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(168, 85, 247, 0.45)', borderRadius: '14px',
+              display: 'flex', alignItems: 'center', gap: '14px',
+              fontSize: '13px', boxShadow: '0 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 85, 247, 0.18)',
+              whiteSpace: 'nowrap'
             }}>
-              <span style={{ color: '#c084fc', fontFamily: 'var(--font-screen)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <GitCompare size={14} /> Compare Eras:
+              <span style={{ color: '#c084fc', fontFamily: 'var(--font-screen)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13.5px', letterSpacing: '0.02em' }}>
+                <GitCompare size={16} /> Compare Eras:
               </span>
               <input type="date" className="date-input" value={compareDates[0]} min="2010-01-01" max="2025-12-31" onChange={e => setCompareDates([e.target.value, compareDates[1]])} />
-              <span style={{ color: '#64748b' }}>vs</span>
+              <span style={{ color: '#c084fc', fontWeight: 800, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>vs</span>
               <input type="date" className="date-input" value={compareDates[1]} min="2010-01-01" max="2025-12-31" onChange={e => setCompareDates([compareDates[0], e.target.value])} />
             </div>
           )}
